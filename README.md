@@ -25,9 +25,7 @@ Welcome to the **Capybara Pomodoro Timer**, an intuitive time management tool ba
 
 ## 🛠️ How to Use
 
-### 1. Installation
-
-1. Clone this repository to your local machine:
+### Clone this repository to your local machine:
    ```bash
    git clone https://github.com/your-repo/capybara-pomodoro.git
    cd capybara-pomodoro
