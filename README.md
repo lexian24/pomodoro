@@ -30,3 +30,8 @@ Welcome to the **Capybara Pomodoro Timer**, an intuitive time management tool ba
 1. Clone this repository to your local machine:
    ```bash
    git clone https://github.com/your-repo/capybara-pomodoro.git
+   cd capybara-pomodoro
+   pip install -r requirements.txt
+   streamlit run app.py
+
+
