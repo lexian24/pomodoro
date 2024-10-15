@@ -77,6 +77,14 @@ def log_session(module, actual_time, sessions, session_type):
         df = pd.concat([df, pd.DataFrame([session_data])], ignore_index=True)
         df.to_csv(LOG_FILE, index=False)
 
+# Function to clear the study_sessions.csv file
+def clear_history():
+    if os.path.exists(LOG_FILE):
+        os.remove(LOG_FILE)  # Delete the file
+        st.success("Study history cleared!")
+    else:
+        st.warning("No history found to clear!")
+
 # Function to retrieve unique modules from the CSV file
 def get_module_list():
     if os.path.exists(LOG_FILE):
@@ -141,7 +149,7 @@ with col1:
     st.image("capybara.png", width=100)  # Display the Capybara image
 
 with col2:
-    st.title("🐾 Capybara Pomodoro Timer 🐾")  # Display title next to the image
+    st.title("Capybara Pomodoro Timer 🐾")  # Display title next to the image
 
 # Module Selection
 selected_module = st.selectbox("Select Module", modules)
@@ -235,6 +243,10 @@ if st.session_state['running'] and not st.session_state['stop']:
             st.session_state['is_work_session'] = True  # Switch back to work session
             st.session_state['timer'] = st.session_state['work_time'] * 60  # Set timer for next work session
             st.experimental_rerun()  # Restart the app to immediately show the work timer
+
+# Clear Study History Button
+if st.button("Clear Study History"):
+    clear_history()
 
 # View Study Schedule
 if st.button("View Study Schedule"):
