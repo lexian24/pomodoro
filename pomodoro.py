@@ -77,14 +77,6 @@ def log_session(module, actual_time, sessions, session_type):
         df = pd.concat([df, pd.DataFrame([session_data])], ignore_index=True)
         df.to_csv(LOG_FILE, index=False)
 
-# Function to clear the study_sessions.csv file
-def clear_history():
-    if os.path.exists(LOG_FILE):
-        os.remove(LOG_FILE)  # Delete the file
-        st.success("Study history cleared!")
-    else:
-        st.warning("No history found to clear!")
-
 # Function to retrieve unique modules from the CSV file
 def get_module_list():
     if os.path.exists(LOG_FILE):
@@ -168,10 +160,12 @@ st.session_state['sessions'] = st.number_input("Number of Sessions", min_value=1
 # Timer Display (Work or Rest)
 if st.session_state['is_work_session']:
     session_type = "Work"
-    st.subheader(f"Work Timer: {st.session_state['work_time']:02d} minutes")
 else:
     session_type = "Rest"
-    st.subheader(f"Rest Timer: {st.session_state['rest_time']:02d} minutes")
+
+# Display the countdown timer in minutes and seconds
+minutes, seconds = divmod(st.session_state['timer'], 60)
+st.subheader(f"{session_type} Timer: {minutes:02d}:{seconds:02d}")
 
 # Function to play sound when timer ends (using HTML and JavaScript)
 def play_sound():
@@ -246,7 +240,11 @@ if st.session_state['running'] and not st.session_state['stop']:
 
 # Clear Study History Button
 if st.button("Clear Study History"):
-    clear_history()
+    if os.path.exists(LOG_FILE):
+        os.remove(LOG_FILE)  # Delete the file
+        st.success("Study history cleared!")
+    else:
+        st.warning("No history found to clear!")
 
 # View Study Schedule
 if st.button("View Study Schedule"):
