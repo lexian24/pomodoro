@@ -1,4 +1,4 @@
-# 🐾 Capybara Pomodoro Timer 🐾
+# 🐾 Pomodoro Timer 🐾
 
 Welcome to the **Capybara Pomodoro Timer**, an intuitive time management tool based on the Pomodoro Technique! This app is designed to help you stay focused on your tasks while providing a capybara-inspired calming theme for an enjoyable user experience.
 
