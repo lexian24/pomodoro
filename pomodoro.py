@@ -149,7 +149,7 @@ with col1:
     st.image("capybara.png", width=100)  # Display the Capybara image
 
 with col2:
-    st.title("Capybara Pomodoro Timer 🐾")  # Display title next to the image
+    st.title("Capybara Pomodoro Timer")  # Display title next to the image
 
 # Module Selection
 selected_module = st.selectbox("Select Module", modules)
